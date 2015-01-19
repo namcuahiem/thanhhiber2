@@ -1,0 +1,61 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+
+
+	<!-- Display-name -->
+	<display-name>ThanhDemo</display-name>
+
+	<!-- String context configuration's path definition -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/application-context.xml</param-value>
+	</context-param>
+
+	<!-- Listener. It is registered to Servlet Container -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- This listener is needed if you declare any of your beans to be request-scoped 
+		or session-scoped -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<!-- Faces Configuration's Path definition -->
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>/WEB-INF/faces-config.xml</param-value>
+	</context-param>
+
+	<!-- Project Stage Level: Production, Development, UnitTest, SystemTest, 
+		Extension -->
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+
+	<!-- First Page -->
+	<welcome-file-list>
+		<welcome-file>views/students.xhtml</welcome-file>
+	</welcome-file-list>
+
+	<!-- JSF Servlet is defined to container -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Mapping with servlet and url for the http requests. -->
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>
+
